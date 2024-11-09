@@ -3,7 +3,7 @@ import Slide from "./Slide";
 function WhyChooseUs() {
   return (
     <section className="pt-20 mb-20 sm:pt-32 sm:mb-32 md:pt-40 md:mb-40 sm:px-10">
-      <div className="mt-[140vh] sm:mt-0 flex flex-col-reverse sm:flex-row justify-between gap-16 sm:gap-0">
+      <div className="mt-[100vh] sm:mt-0 flex flex-col-reverse sm:flex-row justify-between gap-16 sm:gap-0">
         <div className="flex flex-col gap-y-4 sm:gap-y-10 sm:max-w-[50%] px-5">
           <Slide yAxis={90}>
             <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-50 capitalize">

@@ -1,35 +1,50 @@
 import { Link } from "react-router-dom";
+import MobileNav from "../components/MobileNav";
 
 function Header() {
   return (
-    <header className=" flex items-center px-10 justify-between h-20 text-slate-200 font-semibold text-sm absolute pt-6 leading-6 w-full bg-[#0B1120] z-[1000]">
-      <div>
-        <img src="logo.png" width={160} height={20} alt="" />
-      </div>
-      <nav className="flex items-center capitalize">
-        <ul className="flex gap-4">
-          {[
-            { title: "home", path: "#home" },
-            { title: "about", path: "#about" },
-            { title: "services", path: "contact" },
-          ].map((link) => (
-            <li key={link.title} className="hover:text-sky-400">
-              <a href={link.path}>{link.title}</a>
-            </li>
-          ))}
-        </ul>
-        <div className="flex items-center  gap-4 border-l-2 border-slate-200 border-solid ml-6 pl-6 ">
-          {[
-            { title: "login", path: "login" },
-            { title: "sign up", path: "register" },
-          ].map((link) => (
-            <Link key={link.path} to={link.path} className="hover:text-sky-400">
-              {link.title}
-            </Link>
-          ))}
+    <>
+      <header className="flex items-center px-5 justify-between h-20 text-slate-200 font-semibold text-sm fixed pt-6 leading-6 w-full bg-[#0B1120] z-[1000]">
+        <MobileNav />
+        <div>
+          <img src="logo.png" width={160} height={20} alt="" />
         </div>
-      </nav>
-    </header>
+        <nav className="hidden md:flex flex-col md:flex-row gap-16 md:gap-0 pt-24 md:pt-0 md:justify-end items-center capitalize fixed md:static h-[100vh] md:h-auto w-[100vw] top-[0] left-[0] z-[999999] bg-[#0b1120]">
+          <ul className="flex flex-col md:flex-row justify-center md:w-auto w-full items-center gap-4">
+            {[
+              { title: "home", path: "#home" },
+              { title: "about", path: "#about" },
+              { title: "services", path: "contact" },
+            ].map((link) => (
+              <li
+                key={link.title}
+                className="hover:text-sky-400 text-2xl md:text-sm font-semibold"
+              >
+                <a href={link.path}>{link.title}</a>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center flex-col md:flex-row px-5 md:px-0 gap-4 w-full md:w-auto md:border-l-2 md:border-slate-200 md:border-solid md:ml-6 md:pl-6 ">
+            {[
+              { title: "sign up", path: "register" },
+              { title: "login", path: "login" },
+            ].map((link) => (
+              <Link
+                key={link.title}
+                className={`focus:outline-none ${
+                  link.path === "register"
+                    ? "bg-sky-500 hover:bg-sky-400 md:bg-transparent md:hover:bg-transparent md:hover:text-sky-400"
+                    : "border-solid border-2 border-sky-500 hover:bg-sky-400 md:border-none md:hover:bg-transparent md:hover:text-sky-400"
+                } focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 text-white font-semibold h-12 px-6 md:px-0 rounded-lg w-full flex items-center justify-center sm:w-auto`}
+                to="register"
+              >
+                {link.title}
+              </Link>
+            ))}
+          </div>
+        </nav>
+      </header>
+    </>
   );
 }
 

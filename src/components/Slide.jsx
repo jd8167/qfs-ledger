@@ -4,7 +4,15 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { useEffect } from "react";
 
-function Slide({ children, delay, className, xAxis, yAxis, duration }) {
+function Slide({
+  children,
+  delay,
+  className,
+  xAxis,
+  yAxis,
+  duration,
+  xVisible,
+}) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -31,7 +39,7 @@ function Slide({ children, delay, className, xAxis, yAxis, duration }) {
         visible: {
           opacity: 1,
           translateY: !yAxis ? null : 0,
-          translateX: !xAxis ? null : 0,
+          translateX: !xAxis ? null : xVisible || 0,
         },
       }}
       transition={{
